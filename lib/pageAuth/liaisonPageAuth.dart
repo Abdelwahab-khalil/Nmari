@@ -1,24 +1,22 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:onlinecontact/pageAuth/connexion.dart';
 import 'package:onlinecontact/pageAuth/inscription.dart';
 
-class LaisonAuth extends StatefulWidget {
+class LiaisonPageAuth extends StatefulWidget {
   @override
-  _LaisonAuthState createState() => _LaisonAuthState();
+  _LiaisonPageAuthState createState() => _LiaisonPageAuthState();
 }
 
-class _LaisonAuthState extends State<LaisonAuth> {
+class _LiaisonPageAuthState extends State<LiaisonPageAuth> {
 
   bool affichePageConnexion = true;
 
   void basculation(){
-    setState(() => affichePageConnexion = !affichePageConnexion );
+    setState(() => affichePageConnexion = !affichePageConnexion);
   }
-
   @override
   Widget build(BuildContext context) {
+
     if(affichePageConnexion){
       return Connexion(basculation: basculation);
     }else{

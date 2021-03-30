@@ -1,14 +1,12 @@
-
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:onlinecontact/constants/chargement.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:onlinecontact/constants/chargement.dart';
 
 class Connexion extends StatefulWidget {
 
   final Function basculation;
-  Connexion({this.basculation});
+  Connexion({ this.basculation });
+
   @override
   _ConnexionState createState() => _ConnexionState();
 }
@@ -18,11 +16,11 @@ class _ConnexionState extends State<Connexion> {
   FirebaseAuth _auth = FirebaseAuth.instance;
 
   String email = '';
-  String motDePass = '';
+  String motDepass = '';
 
   bool chargement = false;
 
-  final _keyForem = GlobalKey<FormState>();
+  final _keyForm = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return chargement ? Chargement() : Scaffold(
@@ -30,61 +28,64 @@ class _ConnexionState extends State<Connexion> {
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 50.0, horizontal: 30.0),
           child: Form(
-            key: _keyForem,
+            key: _keyForm,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Image.asset('assets/logo.png', height: 100.0, width: 100.0,),
+                Image.asset('assets/logo.png', height: 100.0, width: 100.0),
                 Center(
-                  child: Text(
-                    'Bienvenu sur Nmari',
-                    style: Theme.of(context).textTheme.title,
-                  ),
+                    child : Text('Bienvenue sur Online Contacts',
+                        style: Theme.of(context).textTheme.title)
                 ),
-                SizedBox(height: 10.0,),
+                SizedBox(height: 10.0),
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Email',
                     border: OutlineInputBorder(),
                   ),
-                  validator: (val) => val.isEmpty ? 'Entrer un email' : null,
+                  validator: (val) => val.isEmpty ? 'Entrez un email' : null,
                   onChanged: (val) => email = val,
                 ),
-                SizedBox(height: 10.0,),
+                SizedBox(height: 10.0),
                 TextFormField(
                   decoration: InputDecoration(
-                    labelText: 'Password',
+                    labelText: 'Mot de passe',
                     border: OutlineInputBorder(),
                   ),
                   obscureText: true,
-                  validator: (val) => val.length < 6 ? 'Password incorrect' : null,
-                  onChanged: (val) => email = val,
+                  validator: (val) => val.length < 6 ? 'Mot de passe incorrect' : null,
+                  onChanged: (val) => motDepass = val,
                 ),
-                SizedBox(height: 10.0,),
+                SizedBox(height: 10.0),
                 FlatButton(
-                    onPressed: () async {
-                      if(_keyForem.currentState.validate()){
-                        AuthResult result = await _auth.signInWithEmailAndPassword(email: email, password: motDePass);
-                        if(result == null){
-                          //error
-                        }
-                        setState(() => chargement = true);
+                  onPressed: () async {
+                    if(_keyForm.currentState.validate()){
+
+                      setState(() => chargement = true);
+
+                      AuthResult result = await _auth.signInWithEmailAndPassword(email: email, password: motDepass);
+                      if(result == null){
+                        setState(() => chargement = false);
                       }
-                    },
-                    color: Colors.blue,
-                    child: Text('Connexion'),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0)
-                ),
+
+                    }
+                  },
+                  color: Colors.amber,
+                  child: Text('Connexion'),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
                 ),
                 OutlineButton(
                   onPressed: (){
-                    widget.basculation();
+                    setState(() {
+                      widget.basculation();
+                    });
                   },
-                  borderSide: BorderSide(width: 1.0, color: Colors.blue),
-                  child: Text('Inscription'),
+                  borderSide: BorderSide(width: 1.0, color: Colors.black),
+                  child: Text('Besoin d\'un nouveau compte ?'),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0)
+                    borderRadius: BorderRadius.circular(20.0),
                   ),
                 )
               ],

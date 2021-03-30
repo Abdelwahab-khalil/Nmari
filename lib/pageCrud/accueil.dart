@@ -10,6 +10,18 @@ class Accueil extends StatefulWidget {
 class _AccueilState extends State<Accueil> {
   @override
   Widget build(BuildContext context) {
-    return Container(child: Text('Accueil'),);
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Nmari'),
+        backgroundColor: Colors.white,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.search,
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
