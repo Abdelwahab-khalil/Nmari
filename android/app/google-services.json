@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "73964638668",
+    "project_id": "onlinecontact-54f71",
+    "storage_bucket": "onlinecontact-54f71.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:73964638668:android:b6e8fce978a5e2167b8d69",
+        "android_client_info": {
+          "package_name": "com.example.onlinecontact"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "73964638668-h7s04smasqjsjerps0vtvp3nc68v9v1v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDj-qa3lSBNpS5rv0IaPejctw1ifYyPNVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "73964638668-h7s04smasqjsjerps0vtvp3nc68v9v1v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
